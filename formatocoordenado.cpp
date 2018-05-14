@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void formatoCoordenado::crearDeMatrizCompleta(vector<vector<int>> matriz){
+void FormatoCoordenado::crearDeMatrizCompleta(vector<vector<int>> matriz){
     m = matriz.size();
     n = matriz[0].size();
     for (int i = 0; i < matriz.size(); i++){
@@ -16,7 +16,7 @@ void formatoCoordenado::crearDeMatrizCompleta(vector<vector<int>> matriz){
         }
     }
 }
-vector<vector<int>> formatoCoordenado::obtenerMatrizCompleta(){
+vector<vector<int>> FormatoCoordenado::obtenerMatrizCompleta(){
     int w = 0;
     vector<vector<int>> matriz_completa(m, vector<int>(n));
     for (int i = 0; i < m; i++){
@@ -30,6 +30,13 @@ vector<vector<int>> formatoCoordenado::obtenerMatrizCompleta(){
             }
         }
     }
-
     return matriz_completa;
 }
+
+int FormatoCoordenado::obtenerElemento(int i, int j){
+    for (int w = 0; w < valores.size(); w++){
+        if (filas[w] == i & columnas[w] == j)
+            return valores[w];      
+    }
+    return 0;
+} 

@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-class formatoCoordenado
+class FormatoCoordenado
 {
 private:
   vector<int>valores;
