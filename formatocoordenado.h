@@ -10,6 +10,9 @@ private:
   vector<int>valores;
   vector<int>filas;
   vector<int>columnas;
+  int m;
+  int n;
+
 public:
   void crearDeMatrizCompleta(vector<vector<int>> matriz);
   vector < vector<int> > obtenerMatrizCompleta();
@@ -21,8 +24,4 @@ public:
   int obtenerNumeroElmentos();
   void modificarPosicion(int, int);
 };
-
-
-
-
 #endif
