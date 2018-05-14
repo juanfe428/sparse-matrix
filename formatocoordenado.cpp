@@ -32,7 +32,6 @@ vector<vector<int>> FormatoCoordenado::obtenerMatrizCompleta(){
     }
     return matriz_completa;
 }
-
 int FormatoCoordenado::obtenerElemento(int i, int j){
     for (int w = 0; w < valores.size(); w++){
         if (filas[w] == i & columnas[w] == j)
@@ -40,3 +39,18 @@ int FormatoCoordenado::obtenerElemento(int i, int j){
     }
     return 0;
 } 
+vector<int> FormatoCoordenado::obtenerFila(int j){
+    vector<int> fila;
+    for(int i = 0 ; i < filas.size() ; i++){
+        if(filas[i] == j)
+            fila.push_back(valores[i]);
+    }
+    return fila;
+}
+vector<int> FormatoCoordenado::obtenerColumna(int j){
+    vector<int> columna;
+    for(int i = 0 ; i < columnas.size(); i++){
+        if(columnas[i]==j)
+            columna.push_back(valores[i]);
+    }
+}
