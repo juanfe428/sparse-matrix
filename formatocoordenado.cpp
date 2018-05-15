@@ -71,3 +71,6 @@ vector<int> FormatoCoordenado::obtenerColumnaDispersa(int j){
     }
     return columna_d;
 }
+int FormatoCoordenado::obtenerNumeroElmentos(){
+    return valores.size();
+}
