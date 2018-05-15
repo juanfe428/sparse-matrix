@@ -48,9 +48,18 @@ vector<int> FormatoCoordenado::obtenerFila(int j){
     return fila;
 }
 vector<int> FormatoCoordenado::obtenerColumna(int j){
-    vector<int> columna;
-    for(int i = 0 ; i < columnas.size(); i++){
-        if(columnas[i]==j)
-            columna.push_back(valores[i]);
+        vector<int> columna;
+        for(int i = 0 ; i < columnas.size(); i++){
+            if(columnas[i]==j)
+                columna.push_back(valores[i]);        
+        }
+        return columna;
+}
+vector<int> FormatoCoordenado::obtenerFilaDispersa(int j){
+    vector<int> fila_d(n, 0);
+    for (int i = 0; i < filas.size(); i++){
+        if (filas[i] == j)
+            fila_d[columnas[i]] = valores[i];
     }
+    return fila_d;
 }
