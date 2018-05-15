@@ -63,3 +63,11 @@ vector<int> FormatoCoordenado::obtenerFilaDispersa(int j){
     }
     return fila_d;
 }
+vector<int> FormatoCoordenado::obtenerColumnaDispersa(int j){
+    vector<int> columna_d(m, 0);
+    for (int i = 0; i < columnas.size(); i++){
+        if (columnas[i] == j)
+            columna_d[filas[i]] = valores[i];
+    }
+    return columna_d;
+}
