@@ -112,14 +112,11 @@ void FormatoCoordenado::modificarPosicion(int i, int j , int val){
             valores[n] = val;
         }
         else if (i >= filas[n] & i <= filas[n + 1]){
-            cout << "columnas[n] : " << columnas[n] << " columnas[n+1]: " << columnas[n + 1] << " j: " << j << endl;
             if (filas[n] == filas[n + 1]){
-                if (j >= columnas[n] & j <= columnas[n + 1])
-                {
+                if (j >= columnas[n] & j <= columnas[n + 1]){
                     valores.insert(valores.begin() + n + 1, val);
                     columnas.insert(columnas.begin() + n + 1, j);
                     filas.insert(filas.begin() + n + 1, i);
-                    cout << "cambio permitdo" << endl;
                     break;
                 }
             }
@@ -127,7 +124,6 @@ void FormatoCoordenado::modificarPosicion(int i, int j , int val){
                 valores.insert(valores.begin() + n + 1, val);
                 columnas.insert(columnas.begin() + n + 1, j);
                 filas.insert(filas.begin() + n + 1, i);
-                cout << "==============verga" << endl;
                 break;
             }
         }
