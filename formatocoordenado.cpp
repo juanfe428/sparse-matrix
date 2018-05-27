@@ -1,21 +1,42 @@
-#include <formatocoordenado.h>
+#include "formatocoordenado.h"
 #include <iostream>
 #include <vector>
 
 using namespace std;
-
-void FormatoCoordenado::crearDeMatrizCompleta(vector<vector<int>> matriz){
-    m = matriz.size();
-    n = matriz[0].size();
-    for (int i = 0; i < matriz.size(); i++){
-        for (int j = 0; j < matriz[i].size(); j++){
-            if (matriz[i][j] != 0)
-                valores.push_back(matriz[i][j]);
-                filas.push_back(i);
-                columnas.push_back(j);    
+void FormatoCoordenado::crearDeMatrizCompleta(vector< vector<int> >& matrix){
+    m = matrix.size();
+    n = matrix[0].size();
+    for (int fil = 0; fil < matrix.size(); fil++)
+    {
+        for (int col = 0; col < matrix[fil].size(); col++)
+        {
+            if (matrix[fil][col] != 0)
+            {
+                valores.push_back(matrix[fil][col]);
+                filas.push_back(fil);
+                columnas.push_back(col);
+            }
         }
     }
+
+    for (int i = 0; i < valores.size(); i++)
+    {
+        cout << valores[i] << " ";
+    }
+    cout << endl;
+    for (int i = 0; i < valores.size(); i++)
+    {
+        cout << columnas[i] << " ";
+    }
+    cout << endl;
+    for (int i = 0; i < valores.size(); i++)
+    {
+        cout << filas[i] << " ";
+    }
+    cout << endl;
 }
+
+
 vector<vector<int>> FormatoCoordenado::obtenerMatrizCompleta(){
     int w = 0;
     vector<vector<int>> matriz_completa(m, vector<int>(n));
@@ -28,6 +49,14 @@ vector<vector<int>> FormatoCoordenado::obtenerMatrizCompleta(){
             else{
                 matriz_completa[i][j] = 0;
             }
+        }
+    }
+    for (int fil = 0; fil < matriz_completa.size(); fil++)
+    {
+        for (int col = 0; col < matriz_completa[fil].size(); col++)
+        {
+            cout << "Matrix[" << fil << "][" << col << "]";
+            cout << matriz_completa[fil][col] << endl;
         }
     }
     return matriz_completa;
@@ -79,6 +108,7 @@ void FormatoCoordenado::modificarPosicion(int i, int j , int val){
         if(filas[n] == i && columnas[n] == j ){
             valores[n] = val;
         }
+
     }
 
 
