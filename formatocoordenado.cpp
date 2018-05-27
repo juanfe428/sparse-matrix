@@ -3,21 +3,7 @@
 #include <vector>
 
 using namespace std;
-void FormatoCoordenado::crearDeMatrizCompleta(vector< vector<int> >& matrix){
-    m = matrix.size();
-    n = matrix[0].size();
-    for (int fil = 0; fil < matrix.size(); fil++)
-    {
-        for (int col = 0; col < matrix[fil].size(); col++)
-        {
-            if (matrix[fil][col] != 0)
-            {
-                valores.push_back(matrix[fil][col]);
-                filas.push_back(fil);
-                columnas.push_back(col);
-            }
-        }
-    }
+void FormatoCoordenado::imprimir(){
 
     for (int i = 0; i < valores.size(); i++)
     {
@@ -34,6 +20,23 @@ void FormatoCoordenado::crearDeMatrizCompleta(vector< vector<int> >& matrix){
         cout << filas[i] << " ";
     }
     cout << endl;
+}
+void FormatoCoordenado::crearDeMatrizCompleta(vector< vector<int> >& matrix){
+    m = matrix.size();
+    n = matrix[0].size();
+    for (int fil = 0; fil < matrix.size(); fil++)
+    {
+        for (int col = 0; col < matrix[fil].size(); col++)
+        {
+            if (matrix[fil][col] != 0)
+            {
+                valores.push_back(matrix[fil][col]);
+                filas.push_back(fil);
+                columnas.push_back(col);
+            }
+        }
+    }
+
 }
 
 
@@ -104,12 +107,29 @@ int FormatoCoordenado::obtenerNumeroElmentos(){
     return valores.size();
 }
 void FormatoCoordenado::modificarPosicion(int i, int j , int val){
-    for(int n = 0 ; i < filas.size() ; i++){
-        if(filas[n] == i && columnas[n] == j ){
+    for(int n = 0 ; n < filas.size() ; n++){
+        if(filas[n] == i & columnas[n] == j ){
             valores[n] = val;
         }
-
+        else if (i >= filas[n] & i <= filas[n + 1]){
+            cout << "columnas[n] : " << columnas[n] << " columnas[n+1]: " << columnas[n + 1] << " j: " << j << endl;
+            if (filas[n] == filas[n + 1]){
+                if (j >= columnas[n] & j <= columnas[n + 1])
+                {
+                    valores.insert(valores.begin() + n + 1, val);
+                    columnas.insert(columnas.begin() + n + 1, j);
+                    filas.insert(filas.begin() + n + 1, i);
+                    cout << "cambio permitdo" << endl;
+                    break;
+                }
+            }
+            else{
+                valores.insert(valores.begin() + n + 1, val);
+                columnas.insert(columnas.begin() + n + 1, j);
+                filas.insert(filas.begin() + n + 1, i);
+                cout << "==============verga" << endl;
+                break;
+            }
+        }
     }
-
-
 }

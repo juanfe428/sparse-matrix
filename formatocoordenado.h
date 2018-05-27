@@ -14,6 +14,7 @@ class FormatoCoordenado
     int n;
 
   public:
+    void imprimir();
     void crearDeMatrizCompleta(vector<vector<int>>& matrix);
     vector<vector<int>> obtenerMatrizCompleta();
     int obtenerElemento(int, int);
