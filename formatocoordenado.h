@@ -14,7 +14,7 @@ private:
   int n;
 
 public:
-  void crearDeMatrizCompleta(vector<vector<int>> matriz);
+  void crearDeMatrizCompleta(vector < vector < int > > matriz);
   vector < vector<int> > obtenerMatrizCompleta();
   int obtenerElemento(int, int);
   vector<int> obtenerFila(int);

@@ -74,3 +74,12 @@ vector<int> FormatoCoordenado::obtenerColumnaDispersa(int j){
 int FormatoCoordenado::obtenerNumeroElmentos(){
     return valores.size();
 }
+void FormatoCoordenado::modificarPosicion(int i, int j , int val){
+    for(int n = 0 ; i < filas.size() ; i++){
+        if(filas[n] == i && columnas[n] == j ){
+            valores[n] = val;
+        }
+    }
+
+
+}
