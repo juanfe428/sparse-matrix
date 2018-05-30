@@ -23,7 +23,7 @@ int main(){
     f1.imprimir();
     matrix2 = f1.obtenerMatrizCompleta();
     v = f1.obtenerFila(1);
-    f1.modificarPosicion(0,1,4);
+    f1.modificarPosicion(0,1,994);
     matrix2 = f1.obtenerMatrizCompleta();
     cout << "modificada: "<<endl;
     f1.imprimir();

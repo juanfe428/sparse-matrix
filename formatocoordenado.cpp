@@ -45,7 +45,7 @@ vector<vector<int>> FormatoCoordenado::obtenerMatrizCompleta(){
     vector<vector<int>> matriz_completa(m, vector<int>(n));
     for (int i = 0; i < m; i++){
         for (int j = 0; j < n; j++){
-            if (i == filas[w] & j == columnas[w] & w + 1 <= valores.size()){
+            if (i == filas[w] && j == columnas[w] && w + 1 <= valores.size()){
                 matriz_completa[i][j] = valores[w];
                 w++;
             }
@@ -54,14 +54,7 @@ vector<vector<int>> FormatoCoordenado::obtenerMatrizCompleta(){
             }
         }
     }
-    for (int fil = 0; fil < matriz_completa.size(); fil++)
-    {
-        for (int col = 0; col < matriz_completa[fil].size(); col++)
-        {
-            cout << "Matrix[" << fil << "][" << col << "]";
-            cout << matriz_completa[fil][col] << endl;
-        }
-    }
+
     return matriz_completa;
 }
 int FormatoCoordenado::obtenerElemento(int i, int j){
@@ -106,26 +99,67 @@ vector<int> FormatoCoordenado::obtenerColumnaDispersa(int j){
 int FormatoCoordenado::obtenerNumeroElmentos(){
     return valores.size();
 }
-void FormatoCoordenado::modificarPosicion(int i, int j , int val){
-    for(int n = 0 ; n < filas.size() ; n++){
-        if(filas[n] == i & columnas[n] == j ){
-            valores[n] = val;
+void FormatoCoordenado::modificarPosicion(int i, int j, int val)
+{
+    bool flag = false;
+    if(i <= filas[0]){
+        if(filas[0]==i){
+            if(j < columnas[0]){
+                valores.insert(valores.begin(), val);
+                filas.insert(filas.begin(), i);
+                columnas.insert(columnas.begin(), j);
+                flag = true;
+
+            }
         }
-        else if (i >= filas[n] & i <= filas[n + 1]){
-            if (filas[n] == filas[n + 1]){
-                if (j >= columnas[n] & j <= columnas[n + 1]){
+        else{
+            valores.insert(valores.begin(), val);
+            filas.insert(filas.begin(), i);
+            columnas.insert(columnas.begin(), j);
+            flag = true;
+        }
+        
+
+    }
+    if(flag == false){
+        for(int n = 0 ; n < filas.size() ; n++){
+            if (filas[n] == i & columnas[n] == j){
+                valores[n] = val;
+                flag = true;
+            }
+        }
+    }
+    if(flag == false){
+        for (int n = 0; n < filas.size()-1; n++)
+        {
+            if (i >= filas[n] && i <= filas[n + 1])
+            {
+                if (filas[n] == filas[n + 1])
+                {
+                    if (j >= columnas[n] && j <= columnas[n + 1])
+                    {
+                        valores.insert(valores.begin() + n + 1, val);
+                        columnas.insert(columnas.begin() + n + 1, j);
+                        filas.insert(filas.begin() + n + 1, i);
+                        flag = true;
+                        break;
+                    }
+                }
+                else
+                {
                     valores.insert(valores.begin() + n + 1, val);
                     columnas.insert(columnas.begin() + n + 1, j);
                     filas.insert(filas.begin() + n + 1, i);
+                    flag = true;
                     break;
                 }
             }
-            else{
-                valores.insert(valores.begin() + n + 1, val);
-                columnas.insert(columnas.begin() + n + 1, j);
-                filas.insert(filas.begin() + n + 1, i);
-                break;
-            }
         }
+
+    }
+    if(flag == false){
+        valores.push_back(val);
+        columnas.push_back(j);
+        filas.push_back(i);
     }
 }
