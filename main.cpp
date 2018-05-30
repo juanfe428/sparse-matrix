@@ -5,7 +5,7 @@
 #include <vector>
 
 int main(){
-	int fil = 3, col = 3;
+	int fil = 4, col = 3;
     vector<vector<int>> matrix(fil, vector<int>(col));
     vector<vector<int>> matrix2;
     vector<int> f;
@@ -25,7 +25,7 @@ int main(){
     f1.imprimir();
     matrix2 = f1.obtenerMatrizCompleta();
     
-    v = f1.obtenerColumna(1);
+    v = f1.obtenerColumnaDispersa(1);
     for(int n = 0 ; n < v.size();n++){
         cout<< v[n]<<endl;
     }
