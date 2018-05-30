@@ -55,8 +55,19 @@ int MatrizDispersa::obtenerElemento(int i , int j){
 }
 vector<int> MatrizDispersa::obtenerFila(int i){
     vector<int> fila;
-    for(int n = 0 ; n <= valores[i].longLista(); n++){
-        fila.push_back(valores[i].infoCol(valores[i].getNodo(n)));
+    for(int n = 1 ; n <= valores[i].longLista(); n++){
+        fila.push_back(valores[i].infoVal(valores[i].getNodo(n)));
     }
     return fila;
+}
+vector<int> MatrizDispersa::obtenerColumna(int j ){
+    vector<int> columna;
+    for (int fil = 0; fil < valores.size(); fil++){
+        for (int col = 1; col <= valores[fil].longLista(); col++){
+            Nodo *n = valores[fil].getNodo(col);
+            if(valores[fil].infoCol(n) == j)
+                columna.push_back(valores[fil].infoVal(n));
+        }
+    }
+    return columna;
 }
