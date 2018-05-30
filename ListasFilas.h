@@ -2,13 +2,13 @@
 #define LISTASFILAS_
 #include <iostream>
 #include <vector>
-#include <list>
+#include "lista.h"
 using namespace std;
 
-class FormatoCoordenado
+class MatrizDispersa
 {
   private:
-    vector< list<int> > valores;
+    vector< Lista > valores;
     int m;
     int n;
 
