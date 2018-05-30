@@ -91,3 +91,10 @@ vector<int> MatrizDispersa::obtenerColumnaDispersa(int j){
     }
     return columna_d;
 }
+int MatrizDispersa::obtenerNumeroElmentos(){
+    int n = 0;
+    for (int fil = 0; fil < valores.size(); fil++){
+        n += valores[fil].longLista();
+    }
+    return n;
+}
