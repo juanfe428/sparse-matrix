@@ -1,26 +1,26 @@
 #include <iostream>
-#include "formatocoordenado.h"
+#include "formatocoordenado.cpp"
 #include "ListasFilas.h"
 #include "lista.h"
 #include <vector>
 
 int main(){
 	int fil = 4, col = 3;
-    vector<vector<int>> matrix(fil, vector<int>(col));
-    vector<vector<int>> matrix2;
+    vector< vector<float> > matrix(fil, vector<float>(col));
+    vector< vector<float> > matrix2;
     vector<int> f;
     vector<int> c;
-    vector<int> v;
+    vector<float> v;
     for (int fil = 0; fil < matrix.size(); fil++){
         for (int col = 0; col < matrix[fil].size(); col++){
             cout << "Matrix[" << fil << "][" << col << "]\n";
             cin >> matrix[fil][col];
         }
     }
-    MatrizDispersa f1;
+    FormatoCoordenado<float> f1;
     
 
-    f1.crearDeMatrizCompleta(matrix);
+    f1.crearMatriz(matrix);
     cout << "creada: "<<endl;
     f1.imprimir();
     matrix2 = f1.obtenerMatrizCompleta();

@@ -4,10 +4,12 @@
 #include <vector>
 using namespace std;
 
-class FormatoCoordenado
-{
+
+
+template <class T>
+class FormatoCoordenado{
   private:
-    vector<int> valores;
+    vector<T> valores;
     vector<int> filas;
     vector<int> columnas;
     int m;
@@ -15,14 +17,14 @@ class FormatoCoordenado
 
   public:
     void imprimir();
-    void crearDeMatrizCompleta(vector<vector<int>>& matrix);
-    vector<vector<int>> obtenerMatrizCompleta();
-    int obtenerElemento(int, int);
-    vector<int> obtenerFila(int);
-    vector<int> obtenerColumna(int);
-    vector<int> obtenerFilaDispersa(int);
-    vector<int> obtenerColumnaDispersa(int);
-    int obtenerNumeroElmentos();
-    void modificarPosicion(int, int , int);
+    void crearMatriz(vector< vector<T> > &matrix);
+    vector<vector<T>> obtenerMatrizCompleta();
+    T obtenerElemento(int, int);
+    vector<T> obtenerFila(int);
+    vector<T> obtenerColumna(int);
+    vector<T> obtenerFilaDispersa(int);
+    vector<T> obtenerColumnaDispersa(int);
+    int obtenerNumeroElementos();
+    void modificarPosicion(int, int , T);
 };
 #endif

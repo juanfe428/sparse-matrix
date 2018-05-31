@@ -3,7 +3,9 @@
 #include <vector>
 
 using namespace std;
-void FormatoCoordenado::imprimir(){
+template <class T>
+void FormatoCoordenado<T>::imprimir()
+{
 
     for (int i = 0; i < valores.size(); i++)
     {
@@ -21,15 +23,15 @@ void FormatoCoordenado::imprimir(){
     }
     cout << endl;
 }
-void FormatoCoordenado::crearDeMatrizCompleta(vector< vector<int> >& matrix){
+
+template <class T>
+void FormatoCoordenado<T>::crearMatriz(vector< vector<T> > &matrix)
+{
     m = matrix.size();
     n = matrix[0].size();
-    for (int fil = 0; fil < matrix.size(); fil++)
-    {
-        for (int col = 0; col < matrix[fil].size(); col++)
-        {
-            if (matrix[fil][col] != 0)
-            {
+    for (int fil = 0; fil < matrix.size(); fil++){
+        for (int col = 0; col < matrix[fil].size(); col++){
+            if (matrix[fil][col] != NULL){
                 valores.push_back(matrix[fil][col]);
                 filas.push_back(fil);
                 columnas.push_back(col);
@@ -39,10 +41,11 @@ void FormatoCoordenado::crearDeMatrizCompleta(vector< vector<int> >& matrix){
 
 }
 
-
-vector<vector<int>> FormatoCoordenado::obtenerMatrizCompleta(){
+template <class T>
+vector<vector<T>> FormatoCoordenado<T>::obtenerMatrizCompleta()
+{
     int w = 0;
-    vector<vector<int>> matriz_completa(m, vector<int>(n));
+    vector<vector<T>> matriz_completa(m, vector<T>(n));
     for (int i = 0; i < m; i++){
         for (int j = 0; j < n; j++){
             if (i == filas[w] && j == columnas[w] && w + 1 <= valores.size()){
@@ -50,59 +53,91 @@ vector<vector<int>> FormatoCoordenado::obtenerMatrizCompleta(){
                 w++;
             }
             else{
-                matriz_completa[i][j] = 0;
+                matriz_completa[i][j] = NULL;
             }
         }
     }
 
     return matriz_completa;
 }
-int FormatoCoordenado::obtenerElemento(int i, int j){
+
+template <class T>
+T FormatoCoordenado<T>::obtenerElemento(int i, int j)
+{
     for (int w = 0; w < valores.size(); w++){
         if (filas[w] == i & columnas[w] == j)
             return valores[w];      
     }
     return 0;
-} 
-vector<int> FormatoCoordenado::obtenerFila(int j){
-    vector<int> fila;
+}
+
+template <class T>
+vector<T> FormatoCoordenado<T>::obtenerFila(int j)
+{
+    vector<T> fila;
     for(int i = 0 ; i < filas.size() ; i++){
         if(filas[i] == j)
             fila.push_back(valores[i]);
     }
     return fila;
 }
-vector<int> FormatoCoordenado::obtenerColumna(int j){
-        vector<int> columna;
-        for(int i = 0 ; i < columnas.size(); i++){
-            if(columnas[i]==j)
-                columna.push_back(valores[i]);        
-        }
-        return columna;
+
+template <class T>
+vector<T> FormatoCoordenado<T>::obtenerColumna(int j)
+{
+    vector<T> columna;
+    for (int i = 0; i < columnas.size(); i++)
+    {
+        if (columnas[i] == j)
+            columna.push_back(valores[i]);
+    }
+    return columna;
 }
-vector<int> FormatoCoordenado::obtenerFilaDispersa(int j){
-    vector<int> fila_d(n, 0);
+
+template <class T>
+vector<T> FormatoCoordenado<T>::obtenerFilaDispersa(int j)
+{
+    vector<T> fila_d(n, 0);
     for (int i = 0; i < filas.size(); i++){
         if (filas[i] == j)
             fila_d[columnas[i]] = valores[i];
     }
     return fila_d;
 }
-vector<int> FormatoCoordenado::obtenerColumnaDispersa(int j){
-    vector<int> columna_d(m, 0);
+
+template <class T>
+vector<T> FormatoCoordenado<T>::obtenerColumnaDispersa(int j)
+{
+    vector<T> columna_d(m, 0);
     for (int i = 0; i < columnas.size(); i++){
         if (columnas[i] == j)
             columna_d[filas[i]] = valores[i];
     }
     return columna_d;
 }
-int FormatoCoordenado::obtenerNumeroElmentos(){
+
+template <class T>
+int FormatoCoordenado<T>::obtenerNumeroElementos()
+{
     return valores.size();
 }
-void FormatoCoordenado::modificarPosicion(int i, int j, int val)
+
+template <class T>
+void FormatoCoordenado<T>::modificarPosicion(int i, int j, T val)
 {
     bool flag = false;
-    if(i <= filas[0]){
+    if(val == 0){
+        for (int n = 0; n < filas.size(); n++){
+            if (filas[n] == i & columnas[n] == j){
+                valores.erase(valores.begin()+n);
+                filas.erase(filas.begin()+n);
+                columnas.erase(filas.begin()+n);
+                
+            }
+        }
+        flag = true;
+    }
+    if(i <= filas[0] && flag == false){
         if(filas[0]==i){
             if(j < columnas[0]){
                 valores.insert(valores.begin(), val);
