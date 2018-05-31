@@ -98,3 +98,52 @@ int MatrizDispersa::obtenerNumeroElmentos(){
     }
     return n;
 }
+void MatrizDispersa::modificarPosicion(int i , int j , int val){
+    bool flag = false;
+    cout << "perra" << endl;
+    if(val == 0){
+        for (int col = 1; col <= valores[i].longLista(); col++){
+            Nodo *n = valores[i].getNodo(col);
+            if (valores[i].infoCol(n) == j){
+                valores[i].elimLista(col);
+            }
+        }
+    }
+    if(valores[i].longLista() == 0 && flag == false){
+        cout << "caso1"<<endl;
+        valores[i].anxLista(val,j);
+        flag = true;
+    }
+    else if(valores[i].longLista() == 1){
+        Nodo *n = valores[i].getNodo(1);
+        if(j > valores[i].infoCol(n) ){
+            valores[i].anxLista(val,j);
+        }
+        else{
+            valores[i].insLista(val,j,1);
+        }
+        flag =true;
+    }
+    else{
+        for(int col = 1 ; col <= valores[i].longLista() ; col++){
+            Nodo *n = valores[i].getNodo(col);
+            if (valores[i].infoCol(n) == j){
+                valores[i].elimLista(col);
+                valores[i].anxLista(val,j);
+                flag = true;
+            }   
+        }
+        cout << "caso2"<<endl;
+    }
+    if(flag == false){
+        cout << "caso 3"<<endl;
+        for (int col = 1; col < valores[i].longLista(); col++){
+            Nodo *n = valores[i].getNodo(col);
+            if (j >= valores[i].infoCol(n) && j <= valores[i].infoCol(valores[i].getNodo(col+1))){
+                valores[i].insLista(val,j,col+1);
+                break;
+            }
+        }
+    }
+
+}

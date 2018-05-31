@@ -1,6 +1,5 @@
 #include "formatocoordenado.h"
-#include <iostream>
-#include <vector>
+
 
 using namespace std;
 template <class T>
@@ -131,7 +130,7 @@ void FormatoCoordenado<T>::modificarPosicion(int i, int j, T val)
             if (filas[n] == i & columnas[n] == j){
                 valores.erase(valores.begin()+n);
                 filas.erase(filas.begin()+n);
-                columnas.erase(filas.begin()+n);
+                columnas.erase(columnas.begin()+n);
                 
             }
         }

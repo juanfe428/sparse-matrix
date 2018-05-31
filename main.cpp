@@ -5,25 +5,28 @@
 #include <vector>
 
 int main(){
-	int fil = 4, col = 3;
-    vector< vector<float> > matrix(fil, vector<float>(col));
-    vector< vector<float> > matrix2;
+	int fil = 3, col = 3;
+    vector< vector<int> > matrix(fil, vector<int>(col));
+    vector< vector<int> > matrix2;
     vector<int> f;
     vector<int> c;
-    vector<float> v;
+    vector<int> v;
     for (int fil = 0; fil < matrix.size(); fil++){
         for (int col = 0; col < matrix[fil].size(); col++){
             cout << "Matrix[" << fil << "][" << col << "]\n";
             cin >> matrix[fil][col];
         }
     }
-    FormatoCoordenado<float> f1;
+    MatrizDispersa f1;
     
 
-    f1.crearMatriz(matrix);
+    f1.crearDeMatrizCompleta(matrix);
     cout << "creada: "<<endl;
     f1.imprimir();
+    f1.modificarPosicion(1,1,99);
+    f1.imprimir();
     matrix2 = f1.obtenerMatrizCompleta();
+
     
     v = f1.obtenerColumnaDispersa(1);
     /*
@@ -50,8 +53,8 @@ int main(){
     {
         for (int col = 0; col < matrix2[fil].size(); col++)
         {
-            cout << "Matrix[" << fil << "][" << col << "]\n";
-            cout << matrix2[fil][col] << endl;
+            cout << matrix2[fil][col]  << " ";
         }
+        cout << endl;
     }
 }
